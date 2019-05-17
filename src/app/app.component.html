@@ -1,43 +1,19 @@
-<div class="row wrapper">
-  <div class="header">
-    <form name="myForm">
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="name" [(ngModel)]="user.name" name="name" type="text" class="validate" required>
-          <label for="name">Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="phone_number" type="tel" [(ngModel)]="user.phone_number" name="phone_number" class="validate">
-          <label for="phone_number">Phone number</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="email" type="email" [(ngModel)]="user.email" name="email" class="validate" required>
-          <label for="email">Email</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="job_title" type="text" [(ngModel)]="user.job_title" name="job_title" class="validate" required>
-          <label for="job_title">Job title</label>
-        </div>
-      </div>
-      <label for="resume">
-        <b>Resume</b>
-      </label>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="resume" type="file" [(ngModel)]="user.resume" name="resume" class="validate" required>
-        </div>
-      </div>
-      <div class="submit">
-        <a class="waves-effect waves-light btn" (click)="submit()">Submit</a>
-      </div>
-    </form>
+<div class="wrapper">
+  <h6>Visitors: {{userCount}}</h6>
+  <div class="form-wrapper">
+    <div class="form-section">
+      <input placeholder="name" id="name" [(ngModel)]="user.name" name="name" type="text" class="validate" required>
+      <input placeholder="Phone number" id="phone_number" type="tel" [(ngModel)]="user.phone_number" name="phone_number" class="validate">
+    </div>
+    <div class="form-section">
+      <input placeholder="Email" id="email" type="email" [(ngModel)]="user.email" name="email" class="validate" required>
+      <input placeholder="Job title" id="job_title" type="text" [(ngModel)]="user.job_title" name="job_title" class="validate"
+        required>
+    </div>
+    <div class="form-section">
+      <input id="resume" type="file" (change)="upload($event)" name="resume" class="validate" required>
+      <a class="waves-effect waves-light btn" (click)="submit()" [class.disabled]="submit_disable">Submit</a>
+    </div>
   </div>
 </div>
-
 <router-outlet></router-outlet>

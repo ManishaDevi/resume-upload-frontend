@@ -5,12 +5,16 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  host: string = 'http://127.0.0.1:3000'
-  constructor(public http: HttpClient) {
-    console.log('Hello ApiService');
-  }
-  user: any = {}
+  host: string = 'https://soulskill-backend.herokuapp.com'
+
+  constructor(public http: HttpClient) { }
   submit(user: any) {
     return this.http.post(`${this.host}/submit`, user)
+  }
+
+  upload(resumeFile: any) {
+    let formData: FormData = new FormData();
+    formData.append('resume', resumeFile);
+    return this.http.post(`${this.host}/upload`, formData)
   }
 }
